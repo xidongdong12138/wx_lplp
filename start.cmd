@@ -1,6 +1,6 @@
 mvn install
 
-cd weixin
+cd weixin_1
 mvn spring-boot:start
 
 cd ..\subscribe

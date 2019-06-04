@@ -21,7 +21,6 @@ public class WeixinApplication {
 //		template.setKeySerializer(new StringRedisSerializer());
 		template.setValueSerializer(new JsonRedisSerializer());
 //		template.setDefaultSerializer(new JsonRedisSerializer());
-
 		return template;
 	}
 
