@@ -12,16 +12,16 @@ import org.springframework.data.redis.serializer.SerializationException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<InMessage> {
+public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<Object> {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 
 	public JsonRedisSerializer() {
-		super(InMessage.class);
+		super(Object.class);
 	}
 
 	@Override
-	public byte[] serialize(InMessage t) throws SerializationException {
+	public byte[] serialize(Object t) throws SerializationException {
 
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		DataOutputStream out = new DataOutputStream(baos);
@@ -45,7 +45,7 @@ public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<InMessage> 
 	}
 
 	@Override
-	public InMessage deserialize(byte[] bytes) throws SerializationException {
+	public Object deserialize(byte[] bytes) throws SerializationException {
 
 		ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
 		DataInputStream in = new DataInputStream(bais);
@@ -56,8 +56,7 @@ public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<InMessage> 
 			in.readFully(classNameBytes);
 
 			String className = new String(classNameBytes, "UTF-8");
-			@SuppressWarnings("unchecked")
-			Class<? extends InMessage> cla = (Class<? extends InMessage>) Class.forName(className);
+			Class<?> cla = (Class<?>) Class.forName(className);
 
 			return this.objectMapper.readValue(Arrays.copyOfRange(bytes, length + 4, bytes.length), cla);
 		} catch (Exception e) {
