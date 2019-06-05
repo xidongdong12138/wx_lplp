@@ -19,7 +19,7 @@ public class JsonRedisSerializer extends Jackson2JsonRedisSerializer<Object> {
 	public JsonRedisSerializer() {
 		super(Object.class);
 	}
-
+//
 	@Override
 	public byte[] serialize(Object t) throws SerializationException {
 
