@@ -1,4 +1,4 @@
-package org.lpjava.weixin;
+package org.lpjava.weixin.unsubscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +37,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @ComponentScan("org.lpjava")
 @EnableJpaRepositories("org.lpjava")
 @EntityScan("org.lpjava")
-public class SubscribeApplication implements EventListenerConfig,ApplicationContextAware {
+public class UnsubscribeApplication implements EventListenerConfig,ApplicationContextAware {
 //CommandLineRunner在RUN方法里启动一个线程等待程序
+	private static final Logger LOG = LoggerFactory.getLogger(UnsubscribeApplication.class);
 	
 	private ApplicationContext ctx;//spring容器
 	@Override
@@ -47,8 +48,8 @@ public class SubscribeApplication implements EventListenerConfig,ApplicationCont
 			ctx = applicationContext;
 		}
 	
-	private static final Logger LOG = LoggerFactory.getLogger(SubscribeApplication.class);
 //对应handle方法
+	@Override
 	public void handle(EventInMessage msg) {
 		String id = msg.getEvent().toLowerCase() + "MessageProcessors";
 		try {
@@ -69,7 +70,7 @@ public class SubscribeApplication implements EventListenerConfig,ApplicationCont
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		SpringApplication.run(SubscribeApplication.class, args);
+		SpringApplication.run(UnsubscribeApplication.class, args);
 //		System.out.println("Spring Boot应用启动成功");
 //		CountDownLatch countDownLatch = new CountDownLatch(1);
 //		countDownLatch.await();
