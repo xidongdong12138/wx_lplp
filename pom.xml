@@ -24,7 +24,6 @@
   		<module>weixin_1</module>
   		<module>subscribe</module>
   		<module>commons</module>
-  		<module>library_lp</module>
   		<module>unsubscribe</module>
   	</modules>
 </project>
