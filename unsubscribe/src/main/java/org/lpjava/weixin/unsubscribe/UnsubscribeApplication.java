@@ -61,7 +61,7 @@ public class UnsubscribeApplication implements EventListenerConfig,ApplicationCo
 			}
 		} catch (Exception e) {
 			LOG.warn("Bean的ID {} 无法调用对应的消息处理器: {}", id, e.getMessage());
-			LOG.trace(e.getMessage(), e);
+//			LOG.trace(e.getMessage(), e);
 		}
 	}
 	@Bean
