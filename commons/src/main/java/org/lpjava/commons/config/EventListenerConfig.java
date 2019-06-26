@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.lpjava.commons.domain.InMessage;
+import org.lpjava.commons.domain.ResponseToken;
 import org.lpjava.commons.domain.event.EventInMessage;
 import org.lpjava.commons.service.JsonRedisSerializer;
 import org.springframework.beans.factory.DisposableBean;
@@ -57,6 +58,16 @@ public interface EventListenerConfig extends
 //		template.setKeySerializer(new StringRedisSerializer());
 		template.setValueSerializer(new JsonRedisSerializer());
 //		template.setDefaultSerializer(new JsonRedisSerializer());
+
+		return template;
+	}
+	
+	@Bean
+	public default RedisTemplate<String, ResponseToken> tokenRedisTemplate(//
+			@Autowired RedisConnectionFactory redisConnectionFactory) {
+		RedisTemplate<String, ResponseToken> template = new RedisTemplate<>();
+		template.setConnectionFactory(redisConnectionFactory);
+		template.setValueSerializer(new JsonRedisSerializer());
 
 		return template;
 	}

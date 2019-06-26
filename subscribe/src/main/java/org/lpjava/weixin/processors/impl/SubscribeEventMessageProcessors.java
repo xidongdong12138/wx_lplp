@@ -4,7 +4,6 @@ import org.lpjava.commons.domain.User;
 import org.lpjava.commons.domain.event.EventInMessage;
 import org.lpjava.commons.processors.EventMessageProcessors;
 import org.lpjava.commons.repository.UserRepository;
-import org.lpjava.weixin.service.TokenManager;
 import org.lpjava.weixin.service.WeixinProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

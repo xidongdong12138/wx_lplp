@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
 import org.lpjava.commons.domain.ResponseError;
 import org.lpjava.commons.domain.ResponseToken;
 import org.lpjava.commons.domain.User;
+import org.lpjava.commons.service.TokenManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

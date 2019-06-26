@@ -1,4 +1,4 @@
-package org.lpjava.weixin.service;
+package org.lpjava.commons.service;
 
 public interface TokenManager {
 
